@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'films',
-    'bootstrap5'
+    'bootstrap5',
+    'accounts',
+
 ]
 
 MIDDLEWARE = [
@@ -124,6 +126,9 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGOUT_REDIRECT_URL = 'homepage'
 
 try:
     from .local_settings import *

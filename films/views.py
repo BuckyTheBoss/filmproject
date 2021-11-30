@@ -4,6 +4,7 @@ from .models import Film, Director, Category, Country
 from django.views.generic import CreateView, ListView
 
 # Create your views here.
+
 class Homepage(ListView):
     queryset = Film.objects.all().order_by('-added_date')
     context_object_name = 'videos'
