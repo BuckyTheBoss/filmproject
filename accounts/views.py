@@ -57,7 +57,7 @@ class UserUpdateView(UpdateView):
         # the kwarg instance=something  in the call to a modelform is imperative to having
         # the form update and object rather than create a new one
         social_form = ProfileSocialForm(self.request.POST, instance=self.request.user.profile)
-        profile_form = ProfileDataForm(self.request.POST, instance=self.request.user.profile)
+        profile_form = ProfileDataForm(self.request.POST, self.request.FILES, instance=self.request.user.profile)
         forms = [social_form, profile_form]
         for other_form in forms:
             if not other_form.is_valid():
