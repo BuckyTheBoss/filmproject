@@ -1,0 +1,10 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+    <h1>site is locked, please input password to proceed</h1>
+<form method="post">
+{% csrf_token %}
+<input name="code" type="text">
+<button>enter</button>
+</form>
+{% endblock %}

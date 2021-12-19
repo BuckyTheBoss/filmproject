@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView
 from .forms import RegistrationForm, ProfileCreateForm, ProfileDataForm, ProfileSocialForm
@@ -68,3 +68,11 @@ class UserUpdateView(UpdateView):
         for other_form in forms:
             other_form.save()
         return super().form_valid(form)
+
+
+def locked(request):
+    if request.method == 'POST':
+        if request.POST.get('code') == '12345':
+            request.session['unlocked'] = True
+            return redirect('homepage')
+    return render(request, 'locked.html')
