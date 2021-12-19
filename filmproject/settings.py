@@ -9,9 +9,9 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
-
+import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -140,4 +140,5 @@ try:
     from .local_settings import *
 
 except ImportError:
-    raise Exception('You must use a local_settings.py file to run this project')
+    django_heroku.settings(locals())
+    SECRET_KEY = os.environ.get('SECRET_KEY')
