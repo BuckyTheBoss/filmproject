@@ -42,8 +42,10 @@ class UserUpdateView(UpdateView):
     template_name = 'accounts/profile.html'
     success_url = reverse_lazy('my_profile')
 
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
+
         context['profile_form'] = ProfileDataForm(self.request.POST or None, instance=self.request.user.profile)
         context['social_form'] = ProfileSocialForm(self.request.POST or None, instance=self.request.user.profile)
         return context
