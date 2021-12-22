@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'films',
     'bootstrap5',
     'accounts',
-
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'accounts.middlewares.DevMiddleware'
+
 ]
 
 ROOT_URLCONF = 'filmproject.urls'
@@ -144,3 +144,14 @@ except ImportError:
     django_heroku.settings(locals())
     SECRET_KEY = os.environ.get('SECRET_KEY')
     DEBUG = os.environ.get('DEBUG')
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+    AWS_URL = os.environ.get('AWS_URL')
+
+MEDIA_URL = AWS_URL + '/media/'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_DEFAULT_ACL = None
+AWS_S3_REGION_NAME = 'eu-central-1'
+AWS_S3_SIGNATURE_VERSION = 's3v4'
