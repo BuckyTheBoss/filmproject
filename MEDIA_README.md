@@ -81,3 +81,14 @@
     MEDIA_URL = AWS_URL + '/media/'
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     ```
+___________________________
+
+
+# OPTIONAL: moveing staticfiles to s3bucket
+
+1.  We update some settings to point Django to use the bucket for static storage
+   1. if you have other settings for STATIC_URL, STATIC_ROOT we will delete/comment them
+    ```
+    STATIC_URL = AWS_URL + '/static/'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    ```

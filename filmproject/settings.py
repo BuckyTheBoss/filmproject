@@ -121,13 +121,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-
-# URL prefix for serving media files
-MEDIA_URL = '/media/'
+# STATIC_URL = '/static/'
+#
+# # URL prefix for serving media files
+# MEDIA_URL = '/media/'
 
 # where the files will live in your server
-MEDIA_ROOT = BASE_DIR/'media'
+# MEDIA_ROOT = BASE_DIR/'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -151,6 +151,9 @@ except ImportError:
 
 MEDIA_URL = AWS_URL + '/media/'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+STATIC_URL = AWS_URL + '/static/'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 AWS_DEFAULT_ACL = None
 AWS_S3_REGION_NAME = 'eu-central-1'
